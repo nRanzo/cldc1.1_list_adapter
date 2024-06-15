@@ -8,7 +8,7 @@ get_version() {
 }
 
 # Schowing versions of the JUnit libraries
-echo "Mostrando le versioni delle librerie JUnit e Hamcrest-Core:"
+echo "Schowing versions of the JUnit and Hamcrest_Core libraries:"
 get_version "JUnit/junit-4.13.2.jar"
 get_version "JUnit/hamcrest-core-1.3.jar"
 
