@@ -1,6 +1,6 @@
 @echo off
 
-rem Funzione per ottenere la versione da un file JAR
+rem Function to obtain the version from a JAR file
 :GET_VERSION
 setlocal
 set "jar_file=%1"
@@ -13,27 +13,27 @@ rd /s /q META-INF
 endlocal
 goto :eof
 
-rem Mostra le versioni delle librerie JUnit e Hamcrest-Core
-echo Mostrando le versioni delle librerie JUnit e Hamcrest-Core:
+rem Schowing the version of the HUnit and Hamcrest_Core libraries
+echo Schowing the version of the HUnit and Hamcrest_Core libraries:
 call :GET_VERSION "JUnit\junit-4.13.2.jar"
 call :GET_VERSION "JUnit\hamcrest-core-1.3.jar"
 
-rem Compila i file Java
+rem Compiling Java files
 "C:\Program Files\Java\jdk-22\bin\javac.exe" -cp .;JUnit\junit-4.13.2.jar;JUnit\hamcrest-core-1.3.jar myAdapter\*.java myTest\*.java
 
-rem Verifica se la compilazione è andata a buon fine
+rem Verifying if compiling was successful
 if %ERRORLEVEL% neq 0 (
-    echo Compilazione fallita.
+    echo Compiling failed.
     exit /b 1
 )
 
-rem Esegui i test
+rem Running tests
 "C:\Program Files\Java\jdk-22\bin\java.exe" -cp .;JUnit\junit-4.13.2.jar;JUnit\hamcrest-core-1.3.jar myTest.TestRunner
 
-rem Verifica se i test sono andati a buon fine
+rem Verifying if tests were successful
 if %ERRORLEVEL% neq 0 (
-    echo Alcuni test sono falliti. Controlla l'output sopra per i dettagli.
+    echo Some tests failed. Please check the output up here for details.
     exit /b 1
 ) else (
-    echo Tutti i test sono passati con successo.
+    echo All tests passed with success.
 )
