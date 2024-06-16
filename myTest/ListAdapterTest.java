@@ -492,4 +492,76 @@ public class ListAdapterTest {
         assertEquals("Element1", list.get(0));
         assertEquals("Element2", list.get(1));
     }
+
+        /**
+     * Test per la creazione di una sottolista da un'altra sottolista esistente.
+     * Verifica che la nuova sottolista contenga gli elementi corretti.
+     */
+    @Test
+    public void testSublistFromSublist() {
+        // Crea una sottolista dalla sottolista esistente
+        ListAdapter subsublist = (ListAdapter) sublist.subList(1, 3);
+
+        assertEquals(2, subsublist.size());
+        assertEquals("Element3", subsublist.get(0));
+        assertEquals("Element4", subsublist.get(1));
+    }
+
+    /**
+     * Test per l'aggiunta di elementi a una sottolista creata da un'altra sottolista.
+     * Verifica che le modifiche siano riflesse nelle liste originali.
+     */
+    @Test
+    public void testAddToSublistFromSublist() {
+        ListAdapter subsublist = (ListAdapter) sublist.subList(0, 2);
+
+        // Aggiunge un elemento alla subsublist
+        subsublist.add("NewElement");
+
+        // Verifica dimensione e contenuto nella subsublist
+        assertEquals(3, subsublist.size());
+        assertEquals("NewElement", subsublist.get(2));
+
+        // Verifica dimensione e contenuto nella sublist originale
+        assertEquals(3, sublist.size());
+        assertEquals("NewElement", sublist.get(0));
+    }
+
+    /**
+     * Test per la rimozione di elementi da una sottolista creata da un'altra sottolista.
+     * Verifica che le modifiche siano riflesse nelle liste originali.
+     */
+    @Test
+    public void testRemoveFromSublistFromSublist() {
+        ListAdapter subsublist = (ListAdapter) sublist.subList(0, 2);
+
+        // Rimuove un elemento dalla subsublist
+        subsublist.remove("Element2");
+
+        // Verifica dimensione e contenuto nella subsublist
+        assertEquals(1, subsublist.size());
+        assertEquals("Element3", subsublist.get(0));
+
+        // Verifica dimensione e contenuto nella sublist originale
+        assertEquals(2, sublist.size());
+        assertEquals("Element3", sublist.get(0));
+    }
+
+    /**
+     * Test per la modifica di elementi in una sottolista creata da un'altra sottolista.
+     * Verifica che le modifiche siano riflesse nelle liste originali.
+     */
+    @Test
+    public void testModifyInSublistFromSublist() {
+        ListAdapter subsublist = (ListAdapter) sublist.subList(0, 2);
+
+        // Modifica un elemento nella subsublist
+        subsublist.set(1, "ModifiedElement");
+
+        // Verifica contenuto nella subsublist
+        assertEquals("ModifiedElement", subsublist.get(1));
+
+        // Verifica contenuto nella sublist originale
+        assertEquals("ModifiedElement", sublist.get(1));
+    }
 }
