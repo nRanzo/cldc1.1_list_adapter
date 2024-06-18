@@ -8,4 +8,8 @@ The documentation for the implementations "ListAdapter," "ListAdapterIterator," 
 
 All documentation, both in Javadoc and PDF formats, is accessible from the "docs" folder.
 
-Please note that build.sh was used during the design on a Unix-based system and is not intended any possible client.
+Please note that build.sh was used during the design on a Unix-based system and is not intended for any possible client.
+
+-- some files are not still available, but will be coming soon --
+
+-- you can support this project by starring it --
